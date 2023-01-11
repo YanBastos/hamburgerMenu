@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    background: #23232e;
+    height: 8vh;
+}
+
+main {
+    background: url("Background.jpg") no-repeat center center;
+
+    background-size: cover;
+    height: 92vh;
+}
+
+.navbar-items {
+    list-style: none;
+    display: flex;
+    color: #fff;
+}
+
+.navbar-items li {
+    letter-spacing: 3px;
+    margin-left: 32px;
+}
+
+.mobile-menu {
+    cursor: pointers;
+    display: none;
+}
+
+.mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+}
+
+/* Mobile reposivo */
+
+@media (max-width: 999px) {
+    body {
+        overflow-x: hidden;
+        /* se sair do body ele fica escondido do body */
+    }
+
+    .navbar-items {
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vh;
+        /* Valor que pega ta tela*/
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+        /* tranforma a barra para o outro lado fora do body */
+        transition: transform 0.3s ease-in;
+    }
+
+    .navbar-items li {
+        margin-left: 0;
+        opacity: 0;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .navbar-items.active {
+        transform: translateX(0);
+        /*
+        Quando a nav list estiver ativa, vai voltar para o possição do body
+        "active" é a classe add pelo js
+        */
+    }
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+    opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+}
